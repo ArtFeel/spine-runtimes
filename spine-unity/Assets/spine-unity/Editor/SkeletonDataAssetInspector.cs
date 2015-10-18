@@ -648,7 +648,7 @@ public class SkeletonDataAssetInspector : Editor {
 		this.m_previewUtility.m_Camera.orthographicSize = orthoSet;
 
 		float dist = Vector3.Distance(m_previewUtility.m_Camera.transform.position, m_posGoal);
-		if (dist > 60f * ((SkeletonDataAsset)target).scale) {
+		if (dist > 0f) {
 			Vector3 pos = Vector3.Lerp(this.m_previewUtility.m_Camera.transform.position, m_posGoal, 0.1f);
 			pos.x = 0;
 			this.m_previewUtility.m_Camera.transform.position = pos;
@@ -857,7 +857,7 @@ public class SkeletonDataAssetInspector : Editor {
 			case EventType.ScrollWheel:
 				if (position.Contains(current.mousePosition)) {
 
-					m_orthoGoal += current.delta.y * ((SkeletonDataAsset)target).scale * 10;
+					m_orthoGoal += current.delta.y;
 					GUIUtility.hotControl = controlID;
 					current.Use();
 				}
